@@ -1,69 +1,74 @@
-// //document é o objeto que representa o documento HTML
-// //Window é o objeto que representa a janela do navegador 
+//criando uma função para adicionar o valor no visor 
+function escreverNoVisor(valueButton){
+    if (document.querySelector("#txtDisplay").value == "0" || document.querySelector("#txtDisplay").value == ""){
+        document.querySelector("#txtDisplay").value = valueButton
+    }
+    else{
+        document.querySelector("#txtDisplay").value += valueButton
+    }
+}
 
-// //utilizando o getElementById para acessar o elemnto HTML
-// const campo = document.getElementById("txtDisplay")
-// campo.value = "Olá Mundo"
+function addOperador(valueButton){
+    let visor = document.querySelector("#txtDisplay").value
+    if (visor.value != "" && valueButton != visor[visor.length -1]){
+        document.querySelector("#txtDisplay").value += valueButton
+    }
+}
 
-// //Recuperando a lista de inputs do formulário com getElementsByTagName
-// const inputs = document.getElementsByTagName("input")
+//Recuperando o valor do button com querySelector e adicionando ao Visor 
+document.querySelector("#btn1").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
 
-// //Pegando o primeiro input da lista 
-// const primeiroInput = inputs[0]
+document.querySelector("#btn2").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn3").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn4").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn5").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn6").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn7").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn8").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
+document.querySelector("#btn9").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
 
-// //Pegando o ultimo input da lista 
-// const ultimoInput = inputs[inputs.length - 1]
+document.querySelector("#btn0").addEventListener("click", function (){
+    escreverNoVisor(this.value)
+})
 
-// //Adicionando valor ao elemento da lista 
-// primeiroInput.value = "Primeiro"
-// ultimoInput.value = "Ultimo" 
-
-// //recuperando o elemento com notação CSS querySelector
-// const primeiroInput2 = document.querySelector("#txtDisplay")
-// //Adicionando valor ao elemento recuperado 
-// primeiroInput2.value = "Primeiro com QuerySelector"
+document.querySelector("#btnSomar").addEventListener("click", function (){
+    addOperador(this.value)
+})
 
 
-// //Recuperando o elemento com notação CSS QuerySeletorAll
-// const inputs2 = document.querySelectorAll("input")
+document.querySelector("#btnResultado").addEventListener("click", () => {
+    let visor = document.querySelector("#txtDisplay").value
+    let resultado = 0
+    //Split para separar os operadores 
+    //Ele divide o valor de visor em array 
+    //Onde cada elemento é um operador
+    //exemplo: 1+2+3
+    //onde 1,2,3 são elementos do array
+    //let operadores = visor.split(/\+|\-|\*|\//)
+    let visorArray = visor.split("+")
 
-// //Pegando o primeiro input da lista
-// const primeiroInput3 = inputs2[0]
-// //Adicionando valor aoa elemento recuperado 
-// primeiroInput3.value = "Primeiro com querySelectorAll"
+    //Realizar a leitura de cada elemnto do Array
+    for (let valor of visorArray){
+        resultado += parseInt(valor)
+    }
+    document.querySelector("#txtDisplay").value = resultado
 
-// //Recuperando a tag filha com querySelector
-// const primeiraTagFilhaInput = document.querySelector("form input")
-// //Adicionando valor ao elemento recuperado 
-// primeiraTagFilhaInput.value = "Primeira tag filha da lista "
-
-// //Recuperando a tag filha com querySelectorAll
-// const tagFilhasInput = document.querySelectorAll("form input")
-// //Pegando o primeiro input da lista 
-// const primeiroTagFilhaInput = tagFilhasInput[0]
-// //Adicionando valor ao elemento recuperado 
-// primeiroTagFilhaInput.value = "Primeira tag filha da listaa *"
-
-// //Recuperando elementos com ClassName querySelector
-// const elemento = document.querySelector(".minha-classe")
-// //Adicionando valor ao elemento recuperado
-// elemento.value = "Primeira tag filha com className"
-
-//recuperando o valor do button com querySelector e adicionado ao visor 
-// document.querySelector("#btn1").addEventListener("click", function(){
-//     if (document.querySelector("#txtDisplay").value == "0"|| document.querySelector("#txtDisplay").value == ""){
-//         document.querySelector("#txtDisplay").value = 1
-//     }
-//     else{
-//         document.querySelector("#txtDisplay").value +=1
-//     }
-// })
-
-// document.querySelector("#btn1").addEventListener("click", function(){
-//     if (document.querySelector("#txtDisplay").value == "0"|| document.querySelector("#txtDisplay").value == ""){
-//         document.querySelector("#txtDisplay").value = 2
-//     }
-//     else{
-//         document.querySelector("#txtDisplay").value +=2
-//     }
-// })
+})
